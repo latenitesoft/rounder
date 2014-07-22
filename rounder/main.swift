@@ -81,11 +81,10 @@ func main() {
     for file in contentsAtPath {
         let filename = file.lastPathComponent
         
-        let filenameLength = filename.utf16count
-        if filename[0] == "." || filenameLength == 0 {
+        if filename.isEmpty || filename[0] == "." {
             continue
         }
-        let matches = regex.numberOfMatchesInString(filename, options: NSMatchingOptions(0), range: NSMakeRange(0, filenameLength))
+        let matches = regex.numberOfMatchesInString(filename, options: NSMatchingOptions(0), range: NSMakeRange(0, filename.utf16Count))
         if (matches > 0) {
             println("\nProcessing file \(file)")
             let result = ImageProcessor.processImageAtPath("\(currentPath)/\(filename)", overwrite: !preserveOriginal)
