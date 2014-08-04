@@ -81,7 +81,7 @@ func main() {
     for file in contentsAtPath {
         let filename = file.lastPathComponent
         
-        let filenameLength = filename.utf16count
+        let filenameLength = filename.utf16Count
         if filename[0] == "." || filenameLength == 0 {
             continue
         }
